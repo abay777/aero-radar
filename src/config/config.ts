@@ -35,8 +35,15 @@ export const options = {
         bl_lng: '68.0',
         tr_lat: '36.0',
         tr_lng: '97.0',
-      limit: "300",
+      limit: "100",
     },
+    headers: {
+      'X-RapidAPI-Key': '35c9046f7cmshd2db25369e25f75p1cf84ejsn4d95e7ba924',
+      'X-RapidAPI-Host': 'flight-radar1.p.rapidapi.com'
+  },
+  };
+
+  export const headerOpt = {
     headers: {
       "X-RapidAPI-Key": "e4f5ce1768msh41219fbd34033ffp143b1bjsn94b55b3d9b12",
       "X-RapidAPI-Host": "flight-radar1.p.rapidapi.com",

@@ -1,8 +1,7 @@
-
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ClientRootLayout from "./ClientRootLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,19 +12,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  viewMap,
+  viewList,
+}: {
   children: React.ReactNode;
-}>) {
+  viewMap: React.ReactNode;
+  viewList: React.ReactNode;
+}) {
   return (
     <html lang="en">
-      <head>
-        
-      </head>
+      <head></head>
       <body className={inter.className}>
-
-          {children}
-       
-        </body>
+        <ClientRootLayout viewMap={viewMap} viewList={viewList} />
+      </body>
     </html>
   );
 }

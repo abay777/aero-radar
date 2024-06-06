@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/context/store";
 import fetchFlight from "@/context/action";
 
-interface FormattedResponse {
+export interface FormattedResponse {
   id: any;
   code: any;
   position:LatLngExpression;
@@ -20,6 +20,8 @@ interface FormattedResponse {
   lon: number;
   airCraftType:any;
 }
+
+
 
 export const MapPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();

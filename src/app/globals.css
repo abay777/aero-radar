@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -44,12 +49,10 @@ body {
   align-items: center;
 }
 
-.navbar a {
+.navbar button {
   position: relative;
   padding: 10px;
   color: white;
-  text-decoration: none;
-  
 }
 
 .hrnav {
@@ -63,16 +66,55 @@ body {
   transition: width 0.3s ease, left 0.3s ease;
 }
 
-.navbar a:nth-child(1):hover ~ .hrnav {
-  width: 50px; /* Adjust this value to match the width of the anchor tag */
-  left: 0; /* Adjust this value if needed */
-}
-.navbar a:nth-child(2):hover ~ .hrnav {
-  margin-left: 53%;
-  width: 50px; /* Adjust this value to match the width of the anchor tag */
-  left: 0; /* Adjust this value if needed */
+@media (min-width:901px) {
+  .navbar button:nth-child(1):hover ~ .hrnav {
+    width: 50px; /* Adjust this value to match the width of the anchor tag */
+    left: 0; /* Adjust this value if needed */
+  }
+  .navbar button:nth-child(2):hover ~ .hrnav {
+    margin-left: 53%;
+    width: 50px; /* Adjust this value to match the width of the anchor tag */
+    left: 0; /* Adjust this value if needed */
+  }
+  
+  .navbar button:hover {
+    color: #545050; /* Adjust hover color if needed */
+  }
+  
 }
 
-.navbar a:hover {
-  color: #545050; /* Adjust hover color if needed */
+@media (max-width:900px) {
+  .navbar button:nth-child(1):hover ~ .hrnav {
+    width: 30px; /* Adjust this value to match the width of the anchor tag */
+    left: -40px ; /* Adjust this value if needed */
+  }
+  .navbar button:nth-child(2):hover ~ .hrnav {
+    margin-left: 53%;
+    width: 30px; /* Adjust this value to match the width of the anchor tag */
+    left: 40px; /* Adjust this value if needed */
+  }
+  
+  .navbar button:hover {
+    color: #545050; /* Adjust hover color if needed */
+  }
+
+  
+}
+
+.tableContainer{
+  width:100%;
+  overflow-x: auto;
+  margin: 1px auto;
+}
+
+.tableContainer table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0 auto;
+  overflow-x: auto;
+  
+}
+
+.tableContainer table > tr {
+
 }
