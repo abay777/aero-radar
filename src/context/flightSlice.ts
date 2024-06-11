@@ -5,6 +5,7 @@ import { act } from "react";
 
 interface InitialState {
     flightData:any,
+    path:any;
     loading:boolean;
     error:any;
 
@@ -12,6 +13,7 @@ interface InitialState {
 
 const initialState:InitialState | null = {
     flightData:undefined,
+    path:undefined,
     loading:false,
     error:null
 
@@ -23,6 +25,10 @@ const flightSlice = createSlice({
     name:"flight",
     initialState,
     reducers:{
+        setPath:(state,payload:any)=>{
+          state.path =  payload.path;
+
+        }
 
     },
     extraReducers:(builder) => {
@@ -44,5 +50,5 @@ const flightSlice = createSlice({
 
 
 })
-
+ export const {setPath} =  flightSlice.actions;
  export default flightSlice.reducer

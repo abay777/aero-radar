@@ -1,33 +1,37 @@
-"use client";
-
+'use client';
+import React, { useState } from "react";
 import { Inter } from "next/font/google";
+import { Provider } from "react-redux";
+import store from "@/context/store";
 import { Navbar } from "@/Components/Home/Navbar/Navbar";
-import Providers from "@/context/providers";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Dynamically import the modal content component to avoid server-side rendering issues
+
+
 export default function ClientRootLayout({
+  children,
   viewMap,
   viewList,
 }: {
+  children: React.ReactNode;
   viewMap: React.ReactNode;
   viewList: React.ReactNode;
 }) {
-  const [view, setView] = useState<'map' | 'list'>('map');
-
-  const handleSetView = (view: 'map' | 'list') => {
-    setView(view);
-  };
+  const [view,setView] = useState<'list' |'map'> ('map')
+ 
 
   return (
-    <Providers>
-      <Navbar setView={handleSetView} />
-      <div style={{ display: 'flex' }}>
-        {view === 'map' && <div style={{ flex: 1 }}>{viewMap}</div>}
-        {view === 'list' && <div style={{ flex: 1 }}>{viewList}</div>}
-      </div>
-    </Providers>
+    <div className={inter.className}>
+      <Provider store={store}>
+        <Navbar setView={setView}/>
+        {view ==='map' ?(
+         viewMap) :(
+         viewList)}
+       
+      </Provider>
+      
+    </div>
   );
 }

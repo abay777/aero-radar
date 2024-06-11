@@ -1,16 +1,21 @@
-'use client'
-import { ListView } from "@/Components/ListView/ListView";
-import React from "react";
+// app/@viewList/page.tsx
 
-const viewList = () => {
+'use client';
+
+import React, { useEffect, useState } from "react";
+import { ListView } from "@/Components/ListView/ListView";
+import styles from '@/app/styles/modal.module.css';
+
+const ViewList = () => {
+  
+  
+
   return (
-    <>
     <main>
-        <ListView/>
+      <ListView />
 
     </main>
-    </>
-  )
+  );
 };
 
-export default  viewList;
+export default ViewList;
