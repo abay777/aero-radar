@@ -69,10 +69,12 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
     <>
       {loading ? (
         <div className="flex items-center justify-center mt20">
-          <Image src={'/flight landing.gif'}
-          width={200}
-          height={200}
-          alt="✈️"/>
+          <Image
+            src={"/flight landing.gif"}
+            width={200}
+            height={200}
+            alt="✈️"
+          />
         </div>
       ) : (
         <section className="w-full min-h-screen md:w-[20rem] md:max-h-fit px-2 py-3 md:top-10 md:left-0 fixed  z-[1000] bg-black rounded-lg border-white border-2">
