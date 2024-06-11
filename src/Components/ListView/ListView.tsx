@@ -34,7 +34,10 @@ export const ListView: React.FC = () => {
   return (
     <>
       {loading ? (
-        <div className="loader">Loading...</div>
+        <div className="flex justify-center mt-40 items-center w-full">
+          <div className="loader"></div>
+        </div>
+        
       ) : error ? (
         <div className="flex flex-col justify-center mt-16 items-center">
           <Image 
@@ -45,9 +48,9 @@ export const ListView: React.FC = () => {
           <p className="text-2xl font-mono font-semibold text-wrap mx-10 text-red-500">sorry because of high usage , we are suspended for a short while</p>
         </div>
       ) : (
-        <section className="p-0 mt-10 relative">
-          <div className="tableContainer w-full overflow-x-auto">
-            <table onClick={handleBgClick} className="w-[90%]">
+        <section className="p-0 mt-10 relative mx-auto  ">
+          <div className="tableContainer w-full overflow-x-auto ">
+            <table onClick={handleBgClick} className="w-[99%] md:w-[95%] mx-0 md:translate-x-60 translate-x-0  overflow-auto   md:mx-auto  block  ">
               <thead>
                 <tr className="bg-green-600 text-white">
                   <th className="p-4 text-center border text-wrap text-lg">
@@ -76,9 +79,9 @@ export const ListView: React.FC = () => {
                     >
                       <td
                         onClick={() => handleClick(plane.id)}
-                        className="bg-orange-300 m-2 text-black font-bold text-center border rounded-3xl hover:bg-orange-950"
+                        
                       >
-                        Show
+                       <span className="bg-white text-black py-2 px-3 rounded-md font-bold text-xl mx-10 hover:bg-gray-700">show</span>
                       </td>
                       <td className="p-4 text-center border">{plane.id}</td>
                       <td className="p-4 text-center border">{plane.code}</td>

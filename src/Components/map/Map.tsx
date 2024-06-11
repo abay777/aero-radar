@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/context/store";
 import fetchFlight from "@/context/action";
 import { ModalView } from "../modal/ModalView";
+import Link from "next/link";
 
 export interface FormattedResponse {
   id: any;
@@ -94,7 +95,6 @@ export const MapPage: React.FC = () => {
                   >
                     Details
                   </button>
-                  <button className="bg-black text-white px-4 py-2 font-semibold w-full">List</button>
                 </div>
               </div>
             </Popup>
@@ -105,7 +105,11 @@ export const MapPage: React.FC = () => {
       </MapContainer>
         </section>
       ):loading ?
-     ( <div className="loader"></div>)   : (
+     (  
+     <div className="flex justify-center items-center w-full mt-40">
+      <div className="loader"></div>
+    </div>
+    )   : (
        <MapContainer
         center={initialPosition}
         zoom={13}
@@ -129,7 +133,7 @@ export const MapPage: React.FC = () => {
                   >
                     Details
                   </button>
-                  <button className="bg-black text-white px-4 py-2 font-semibold w-full">List</button>
+                
                 </div>
               </div>
             </Popup>
