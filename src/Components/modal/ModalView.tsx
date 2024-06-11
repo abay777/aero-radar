@@ -68,9 +68,16 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
   return (
     <>
       {loading ? (
-        <div className="loader"></div>
+        <div className="flex items-center justify-center mt20">
+          <Image
+            src={"/flight landing.gif"}
+            width={200}
+            height={200}
+            alt="✈️"
+          />
+        </div>
       ) : (
-        <section className="w-full sm:min-h-screen md:w-[20rem] md:max-h-fit px-2 py-3 md:top-10 md:left-0 fixed  z-[1000] bg-black rounded-lg border-white border-2">
+        <section className="w-full min-h-screen md:w-[20rem] md:max-h-fit px-2 py-3 md:top-10 md:left-0 fixed  z-[1000] bg-black rounded-lg border-white border-2">
           <div
             onClick={() => setModal(false)}
             className="flex justify-between px-4 items-center mb-3 bg-red-400 hover:bg-red-600 duration-150 ease-linear rounded-lg"
@@ -78,7 +85,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
             <span className="text-base">close</span>
             <span className="text-lg">x</span>
           </div>
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center mx-10 md:mx-4">
             <h1 className="text-xl font-bold">{aircraftModel}</h1>
             <p className="text-center text-sm font-bold text-gray-600">
               {aircraftCode}
@@ -92,7 +99,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
               quality={100}
             />
           </div>
-          <div className="mt-3">
+          <div className="mx-10 md:mx-4">
             <h3 className="text-lg text-blue-400 text-center font-extrabold">
               Departed - details (origin)
             </h3>
@@ -105,7 +112,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
               {departureTime}
             </p>
           </div>
-          <div className="mt-3">
+          <div className="mx-10 md:mx-4">
             <h3 className="text-lg text-green-300 text-center font-extrabold">
               Arrival - details (destination)
             </h3>
@@ -120,7 +127,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
               {arrivalTime}
             </p>
           </div>
-          <div>
+          <div className="m5-10 md:mt-4">
             <p className="w-full ">
               <span
                 className={`px-2 py-3 block text-center rounded-md w-full mt-2 ${flightData.status.icon}`}
