@@ -8,7 +8,7 @@ import {
   Polyline,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { LatLngExpression, divIcon } from "leaflet";
+import { LatLng, LatLngExpression} from "leaflet";
 import { renderToString } from "react-dom/server";
 import L from "leaflet";
 import Image from "next/image";
@@ -17,8 +17,8 @@ import smallFlight from "@/../../public/small flight.png";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/context/store";
 import fetchFlight from "@/context/action";
-import { ModalView } from "../modal/ModalView";
-import Link from "next/link";
+import { ModalView } from "../modal/ModalView";;
+import { clearPath } from "@/context/flightSlice";
 
 export interface FormattedResponse {
   id: any;
@@ -29,9 +29,9 @@ export interface FormattedResponse {
   airCraftType: any;
 }
 
-export const MapPage: React.FC = () => {
+ const MapPage: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { flightData, loading, error, path } = useSelector(
+  const { flightData, loading, error, path }:{flightData:any,loading:boolean,error:any,path:LatLng[] | null | undefined} = useSelector(
     (state: RootState) => state.flightList
   );
   const initialPosition: LatLngExpression = [10.7867, 76.6548];
@@ -48,6 +48,7 @@ export const MapPage: React.FC = () => {
   };
 
   useEffect(() => {
+    const height = window.innerHeight;
     dispatch(fetchFlight());
   }, [dispatch]);
 
@@ -58,7 +59,7 @@ export const MapPage: React.FC = () => {
     if (!loading && flightData) {
       setFlights(flightData);
     }
-  }, [loading, flightData, error]);
+  }, [loading, flightData, error, path]);
 
   const BigFlightIconComponent = useCallback(
     () => (
@@ -77,6 +78,7 @@ export const MapPage: React.FC = () => {
     iconSize: [30, 42],
     iconAnchor: [15, 42],
   });
+  console.log(path,'this is path')
 
   return (
     <>
@@ -114,12 +116,13 @@ export const MapPage: React.FC = () => {
                         >
                           Details
                         </button>
+                       
                       </div>
                     </div>
                   </Popup>
                 </Marker>
               ))}
-            {path && <Polyline positions={path} />}
+            { path ?  <Polyline lineCap="round" color="#149441" positions={path}/> : null}
             {modal && <ModalView flightCode={flightCode} setModal={setModal} />}
           </MapContainer>
         </section>
@@ -161,10 +164,12 @@ export const MapPage: React.FC = () => {
                 </Popup>
               </Marker>
             ))}
-          {path && <Polyline positions={path} />}
+          {path ? <Polyline positions={path}  /> : null}
           {modal && <ModalView flightCode={flightCode} setModal={setModal} />}
         </MapContainer>
       )}
     </>
   );
 };
+
+export default MapPage

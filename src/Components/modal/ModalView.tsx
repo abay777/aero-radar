@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import Image from "next/image";
-import { setPath } from "@/context/flightSlice";
+import { clearPath, setPath } from "@/context/flightSlice";
 import formatDate from "@/utility/formatdate";
 import { headers } from "@/config/config";
+import { RootState } from "@/context/store";
 
 interface Props {
   flightCode: string | undefined;
@@ -17,7 +18,12 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
   const [flightData, setFlightData] = useState<any>(null);
   const [loading, setloading] = useState<boolean>(true);
   const dispatch = useDispatch();
+  const path = useSelector((state:RootState)=>state.flightList.path)
 
+  const handleClose = () => {
+    dispatch(clearPath());
+    setModal(false);
+  }
   useEffect(() => {
     if (!flightCode) return;
 
@@ -32,7 +38,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
         setFlightData(res.data);
         setloading(false);
         dispatch(setPath(res.data.trail));
-        console.log(res.data);
+        console.log(res.data.trail);
       })
       .catch((error) => {
         console.log(error);
@@ -79,7 +85,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
       ) : (
         <section className="w-full min-h-screen md:w-[20rem] md:max-h-fit px-2 py-3 md:top-10 md:left-0 fixed  z-[1000] bg-black rounded-lg border-white border-2">
           <div
-            onClick={() => setModal(false)}
+            onClick={() => handleClose}
             className="flex justify-between px-4 items-center mb-3 bg-red-400 hover:bg-red-600 duration-150 ease-linear rounded-lg"
           >
             <span className="text-base">close</span>

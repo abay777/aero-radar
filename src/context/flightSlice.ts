@@ -1,11 +1,11 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import fetchFlight from "./action";
-import { act } from "react";
+import { LatLng } from "leaflet";
 
 interface InitialState {
-    flightData:any,
-    path:any;
+    flightData:any;
+    path:LatLng[] | undefined| null;
     loading:boolean;
     error:any;
 
@@ -13,7 +13,7 @@ interface InitialState {
 
 const initialState:InitialState | null = {
     flightData:undefined,
-    path:undefined,
+    path:null,
     loading:false,
     error:null
 
@@ -25,9 +25,13 @@ const flightSlice = createSlice({
     name:"flight",
     initialState,
     reducers:{
-        setPath:(state,payload:any)=>{
-          state.path =  payload.path;
+        setPath:(state,payload:{payload:any, type:string})=>{
+          state.path = [payload.payload]
+          
 
+        },
+        clearPath:(state)=>{
+            state.path=null;
         }
 
     },
@@ -50,5 +54,5 @@ const flightSlice = createSlice({
 
 
 })
- export const {setPath} =  flightSlice.actions;
+ export const {setPath, clearPath} =  flightSlice.actions;
  export default flightSlice.reducer

@@ -1,8 +1,10 @@
 "use client"
+import dynamic from "next/dynamic";
 import React from "react";
-import { MapPage } from "@/Components";
+const MapPage = dynamic(() => import('@/Components/map/Map'), { ssr: false });
 
 const viewMap:React.FC = () => {
+ 
   return (
     <main>
        <MapPage/>
