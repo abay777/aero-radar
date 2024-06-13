@@ -21,8 +21,8 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
   const path = useSelector((state:RootState)=>state.flightList.path)
 
   const handleClose = () => {
-    dispatch(clearPath());
     setModal(false);
+    dispatch(clearPath());
   }
   useEffect(() => {
     if (!flightCode) return;
@@ -38,7 +38,6 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
         setFlightData(res.data);
         setloading(false);
         dispatch(setPath(res.data.trail));
-        console.log(res.data.trail);
       })
       .catch((error) => {
         console.log(error);
@@ -50,7 +49,7 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
     return () => {
       setFlightData(null);
     };
-  }, [flightCode, dispatch]);
+  }, [flightCode, dispatch,setModal]);
 
   if (!flightData) return <div>Loading...</div>;
 
@@ -83,9 +82,9 @@ export const ModalView: React.FC<Props> = ({ flightCode, setModal }) => {
           />
         </div>
       ) : (
-        <section className="w-full bottom-0 md:w-[20rem]  px-2 py-3 md:top-10 md:left-0 fixed  z-[1000] bg-black rounded-lg border-white border-2">
+        <section className="w-full bottom-0 top-15 md:bottom-[10%] lg:top-10 lg:bottom-0 md:top-[20%] md:w-[20rem]  px-2 py-3  md:left-0 fixed  z-[1000] bg-black rounded-lg border-white border-2">
           <div
-            onClick={() => handleClose}
+            onClick={() => handleClose()}
             className="flex justify-between px-4 items-center mb-3 bg-red-400 hover:bg-red-600 duration-150 ease-linear rounded-lg"
           >
             <span className="text-base">close</span>
