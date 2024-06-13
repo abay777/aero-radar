@@ -78,7 +78,7 @@ export interface FormattedResponse {
     iconSize: [30, 42],
     iconAnchor: [15, 42],
   });
-  console.log(path,'this is path')
+  
 
   return (
     <>

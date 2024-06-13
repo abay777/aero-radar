@@ -91,7 +91,8 @@ export const ListView: React.FC = () => {
                     </tr>
                   ))}
               </tbody>
-              <div className="block w-[20rem] lg:w-[50rem] mt-5 translate-x-[50%] lg:translate-x-4 xl:translate-x-40 overflow-x-auto">
+            </table>
+            <div className="block w-[60%] mx-auto lg:w-[90%] mt-5 translate-x-[10%] lg:translate-x-[30%] xl:translate-x-[30%] overflow-x-auto">
                 {Array.from({
                   length: Math.ceil(flightData?.length / itemsPerPage || 0),
                 }).map((_, index) => (
@@ -104,7 +105,6 @@ export const ListView: React.FC = () => {
                   </span>
                 ))}
               </div>
-            </table>
           </div>
           {modal ? (
             <ModalView flightCode={flightCode} setModal={setModal} />
