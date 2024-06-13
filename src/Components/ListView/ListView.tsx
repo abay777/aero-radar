@@ -48,7 +48,7 @@ export const ListView: React.FC = () => {
         </div>
       ) : (
         <section className="p-0 mt-10 relative mx-auto  ">
-          <div className="tableContainer w-full overflow-x-auto ">
+          <div className=" w-full overflow-x-auto ">
             <table
               onClick={handleBgClick}
               className="w-[99%] md:w-[95%] mx-0 md:translate-x-[7%] lg:translate-x-[20%] xl:translate-x-60 translate-x-0  overflow-auto   lg:mx-auto  block  "
