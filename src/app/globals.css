@@ -101,12 +101,7 @@ body {
   
 }
 
-.tableContainer{
-  width:100%;
-  overflow-x: auto;
-  margin: 1px auto;
- 
-}
+
 
 .tableContainer table {
   border-collapse: collapse;
@@ -117,13 +112,13 @@ body {
 }
 
 .red {
-  background: red;
+  background: rgb(86, 16, 16);
 }
 .yellow {
-  background: rgb(229, 229, 42);
+  background: rgb(90, 90, 10);
 }
 .green {
-  background: rgb(18, 171, 18);
+  background: rgb(16, 63, 16);
 }
 
 
