@@ -20,6 +20,7 @@ Indian Flight Tracker is a robust web application designed to provide real-time 
 - **Flight Details**: Comprehensive details for each flight, including status and route.
 - **Map Integration**: Live flight tracking on an interactive map using Leaflet.
 - **Advanced Routing**: Utilizes Next.js advanced routing features like parallel and dynamic routing.
+- **Map and List Views**: Both map view and list view are available using parallel routing for a comprehensive user experience.
 - **Error Handling**: Robust error handling for API requests and loading states.
 - **Scalability**: Designed with scalability in mind to handle a large number of users and data.
 
