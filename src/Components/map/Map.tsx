@@ -34,7 +34,7 @@ export interface FormattedResponse {
   const { flightData, loading, error, path }:{flightData:any,loading:boolean,error:any,path:LatLng[] | null | undefined} = useSelector(
     (state: RootState) => state.flightList
   );
-  const initialPosition: LatLngExpression = [10.7867, 76.6548];
+  const initialPosition: LatLngExpression = [20.5937, 78.9629];
   const [flights, setFlights] = useState<
     FormattedResponse[] | null | undefined
   >(undefined);
@@ -90,7 +90,7 @@ export interface FormattedResponse {
           </p>
           <MapContainer
             center={initialPosition}
-            zoom={13}
+            zoom={5}
             scrollWheelZoom={true}
             className="w-full min-h-[46rem] max-h-screen lg:max-h-[20rem] mt-5 z-[10]"
           >
@@ -112,7 +112,7 @@ export interface FormattedResponse {
                       <div className="flex flex-col justify-center gap-4 items-center">
                         <button
                           onClick={() => handleClick(plane.id)}
-                          className="bg-black text-white px-4 py-2 font-semibold w-full"
+                          className="bg-black text-white px-4 py-2 font-semibold w-full hover:bg-gray-700"
                         >
                           Details
                         </button>
@@ -133,7 +133,7 @@ export interface FormattedResponse {
       ) : (
         <MapContainer
           center={initialPosition}
-          zoom={13}
+          zoom={5}
           scrollWheelZoom={true}
           className="w-full min-h-[46rem] max-h-screen lg:max-h-[20rem] mt-5 z-[10]"
         >
